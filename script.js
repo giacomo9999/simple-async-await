@@ -1,13 +1,13 @@
 console.log("JS here...");
 
-const getPokemon = (id) => {
-  fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
-    .then((data) => data.json())
-    .then((data) => {
-      body.innerHTML = `<h1>${data.name}</h1>`;
-    });
+const getData = async (id) => {
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+  const data = await response.json();
+  return data;
 };
 
-const body = document.querySelector(".content");
+getData(6).then((data) => {
+  console.log("Returned data: ", data);
+});
 
-getPokemon(5);
+
